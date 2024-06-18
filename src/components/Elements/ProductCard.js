@@ -4,10 +4,9 @@ import { useEffect, useState } from "react";
 import { useCart } from "../../context";
 
 export const ProductCard = ({ product }) => {
-    const { cartList, addToCart, removeFromCart } = useCart();
+    const { cartList, addToCart } = useCart();   //eslint-disable-next-line
     const [inCart, setInCart] = useState(false)
-    const [toggle, setToggle] = useState(true)
-    const { id, name, overview, poster, image_local, price, rating, best_seller } = product;
+    const { id, name, overview, image_local, price, rating, best_seller } = product;   //eslint-disable-next-line
 
     useEffect(() => {
         const productInCart =  cartList.find(item => item.id === product.id);
@@ -19,10 +18,6 @@ export const ProductCard = ({ product }) => {
         }
 
     }, [cartList, product.id])
-
-    function handleClick(product) {
-        addToCart(product);
-    }
 
     return (
         <div className="m-3 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
